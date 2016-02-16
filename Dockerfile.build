@@ -1,0 +1,10 @@
+FROM mhart/alpine-node:5.5.0
+
+RUN apk add python make g++ --update
+RUN apk add tesseract-ocr-dev --repository http://nl.alpinelinux.org/alpine/edge/testing --update 
+
+RUN npm install -g node-gyp 
+
+WORKDIR /app
+
+CMD /usr/bin/npm run install-and-rebuild
