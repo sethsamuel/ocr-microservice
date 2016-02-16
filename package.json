@@ -4,8 +4,9 @@
   "description": "Node.js microservice for running Tesseract OCR",
   "main": "index.js",
   "scripts": {
+    "build": "npm run install-and-rebuild",
     "build-docker": "docker build --rm -f Dockerfile.build -t sethfsamuel/ocr-microservice-build . && docker run --rm -it -v \"$(PWD)\":/app sethfsamuel/ocr-microservice-build && docker build --rm -t sethfsamuel/ocr-microservice .",
-    "install-and-rebuild": "npm install && npm rebuild",
+    "install-and-rebuild": "npm prune && npm install && npm rebuild",
     "start": "docker run -it --rm sethfsamuel/ocr-microservice",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -22,6 +23,7 @@
   "homepage": "https://github.com/sethsamuel/ocr-microservice#readme",
   "devDependencies": {
     "koa": "1.1.2",
+    "koa-body": "1.4.0",
     "node-gyp": "3.2.1",
     "tesseract_native": "0.5.2"
   }
